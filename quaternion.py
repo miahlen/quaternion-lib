@@ -4,3 +4,6 @@ class Quaternion():
         self.x = x
         self.y = y
         self.z = z
+
+    def __eq__(self, q2):
+        return self.w==q2.w and self.x==q2.x and self.y==q2.y and self.z==q2.z
