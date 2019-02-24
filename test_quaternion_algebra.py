@@ -47,6 +47,24 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # Assert excepted behaviour
         self.assertTrue(v == Position(1.2, 2.8, -1.0))
 
+    # Rotate a zero vector with a quaterion. Expected behaviour is that no
+    # change has been made to vector after function call rotate_vector_by_quaternion
+    def test_rotate_zero_vector_by_quaternion(self):
+        # Vector to rotate
+        v = Position(0.0, 0.0, 0.0)
+
+        # Quaternion which represent rotation
+        theta = 79 * np.pi/180.0
+        qv = [np.sin(theta/2.0)*vi for vi in [-0.4,0.7,0.4]]
+        q = Quaternion(np.cos(theta/2.0), qv[0], qv[1], qv[2])
+        q = quaternion_algebra.normalize_quaternion(q)
+
+        # Rotate vector with function to test
+        v = quaternion_algebra.rotate_vector_by_quaternion(v,q)
+
+        # Assert excepted behaviour
+        self.assertTrue(v == Position(0.0, 0.0, 0.0))
+
 
 if __name__ == '__main__':
     unittest.main()
