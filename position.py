@@ -9,3 +9,6 @@ class Position():
 
     def __add__(self, p2):
         return Position(self.x+p2.x, self.y+p2.y, self.z+p2.z)
+
+    def __sub__(self, p2):
+        return Position(self.x-p2.x, self.y-p2.y, self.z-p2.z)
