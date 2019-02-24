@@ -65,6 +65,15 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # Assert excepted behaviour
         self.assertTrue(v == Position(0.0, 0.0, 0.0))
 
+    def test_multiply_quaternions(self):
+        q1 = Quaternion(1, 2, 1, -3)
+        q2 = Quaternion(2, -1, -3, 1)
+
+        q = quaternion_algebra.multiply_quaternions(q1, q2)
+
+        q_oracle = Quaternion(10, -5, 0, -10)
+        self.assertTrue(q == q_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
