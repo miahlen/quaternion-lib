@@ -31,6 +31,22 @@ class TestQuaternionAlgebra(unittest.TestCase):
         self.assertAlmostEqual(v.y, -3.05678095585)
         self.assertAlmostEqual(v.z, 0.79390570814)
 
+    # Perform rotation with quaternion which represents no rotation
+    # Expected behaviour is that no change has been made to vector
+    def test_rotate_vector_by_no_rot_quaternion(self):
+        # Vector to rotate
+        v = Position(1.2, 2.8, -1.0)
+
+        # Quaternion which represent no rotation
+        q = Quaternion(1, 0, 0, 0)
+        q = quaternion_algebra.normalize_quaternion(q)
+
+        # Rotate vector with function to test
+        v = quaternion_algebra.rotate_vector_by_quaternion(v,q)
+
+        # Assert excepted behaviour
+        self.assertTrue(v == Position(1.2, 2.8, -1.0))
+
 
 if __name__ == '__main__':
     unittest.main()
