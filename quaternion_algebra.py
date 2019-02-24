@@ -6,6 +6,9 @@ import numpy as np
 def get_quaternion_norm(q):
     return np.sqrt(q.w**2 + q.x**2 + q.y**2 + q.z**2)
 
+def get_quaternion_conjugate(q):
+    return Quaternion(q.w, -q.x, -q.y, -q.z)
+
 def normalize_quaternion(q):
     norm = get_quaternion_norm(q)
 
