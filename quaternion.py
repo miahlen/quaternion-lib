@@ -1,3 +1,5 @@
+import numpy as np
+
 class Quaternion():
     """ Form an Quaternion.
 
@@ -24,3 +26,19 @@ class Quaternion():
 
     def __str__(self):
         return "("+str(self.w)+", "+str(self.x)+", "+str(self.y)+", "+str(self.z)+")"
+
+    def get_quaternion_norm(self):
+        return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
+
+    def normalize_quaternion(self):
+        norm = self.get_quaternion_norm()
+
+        # Make sure norm is not zero before normalizing the quaternion
+        if norm==0.0:
+            raise Exception("Quaternion norm equals zero")
+
+        self.w /= norm
+        self.x /= norm
+        self.y /= norm
+        self.z /= norm
+        return self

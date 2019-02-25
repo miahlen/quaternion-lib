@@ -9,7 +9,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
 
     def test_normalize_quaternion(self):
         q = Quaternion(-2.1,0.0,0.0,0.0)
-        q = quaternion_algebra.normalize_quaternion(q)
+        q.normalize_quaternion()
         self.assertTrue(np.sqrt(q.w**2 + q.x**2 + q.y**2 + q.z**2) == 1)
         self.assertTrue(q == Quaternion(-1.0, 0.0, 0.0, 0.0))
 
@@ -22,7 +22,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         theta = -79 * np.pi/180.0
         qv = [np.sin(theta/2.0)*vi for vi in [-0.4,1.3,4.1]]
         q = Quaternion(np.cos(theta/2.0), qv[0], qv[1], qv[2])
-        q = quaternion_algebra.normalize_quaternion(q)
+        q.normalize_quaternion()
 
         # Rotate vector with function to test
         v = quaternion_algebra.rotate_vector_by_quaternion(v,q)
@@ -40,7 +40,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
 
         # Quaternion which represent no rotation
         q = Quaternion(1, 0, 0, 0)
-        q = quaternion_algebra.normalize_quaternion(q)
+        q.normalize_quaternion()
 
         # Rotate vector with function to test
         v = quaternion_algebra.rotate_vector_by_quaternion(v,q)
@@ -58,7 +58,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         theta = 79 * np.pi/180.0
         qv = [np.sin(theta/2.0)*vi for vi in [-0.4,0.7,0.4]]
         q = Quaternion(np.cos(theta/2.0), qv[0], qv[1], qv[2])
-        q = quaternion_algebra.normalize_quaternion(q)
+        q.normalize_quaternion()
 
         # Rotate vector with function to test
         v = quaternion_algebra.rotate_vector_by_quaternion(v,q)
@@ -78,7 +78,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
     def test_quaternion_to_euler(self):
         # Quaternion to convert
         q = Quaternion(0.670, 0.394, 0.511, -0.368)
-        q = quaternion_algebra.normalize_quaternion(q)
+        q.normalize_quaternion()
 
         # The expected output (OBS, in degrees)
         euler_oracle = EulerAngle(42.118,  76.921, -23.544)
