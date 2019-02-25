@@ -24,8 +24,7 @@ def quaternion_to_euler(q):
 
     # yaw (rotation around z-axis pointing upward)
     yaw = np.arctan2( 2.0 * (q.w*q.z + q.x*q.y), 1.0 - 2.0 * (q.y**2 + q.z**2))
-    euler = EulerAngle(roll, pitch, yaw)
-    return euler
+    return EulerAngle(roll, pitch, yaw)
 
 def get_quaternion_from_vectors(u, v):
     cross_u_v = np.cross(u,v)
