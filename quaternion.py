@@ -42,3 +42,6 @@ class Quaternion():
         self.y /= norm
         self.z /= norm
         return self
+
+    def get_quaternion_conjugate(self):
+        return Quaternion(self.w, -self.x, -self.y, -self.z)
