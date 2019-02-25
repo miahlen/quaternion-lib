@@ -1,6 +1,21 @@
 class Position():
+    """ Form an 3D position.
+
+    A class with instance variables x, y and z, representing
+    a 3D position in meters. If used to represent the position
+    of a robot, x points East, y points North and z points Up.
+    If instead used to represent position offset on robot,
+    x axis points forward, y axis points to the left and z axis
+    points upwards, relative to the ego robot pose.
+
+    Attributes:
+        x: A float representing the x component of the position in meters.
+        y: A float representing the y component of the position in meters.
+        z: A float representing the z component of the position in meters.
+    """
 
     def __init__(self, x=0.0, y=0.0, z=0.0):
+        """Inits Position class with 3D position x,y,z."""
         self.x = x
         self.y = y
         self.z = z
