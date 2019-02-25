@@ -22,3 +22,6 @@ class EulerAngle():
 
     def __str__(self):
         return "("+str(self.roll)+", "+str(self.pitch)+", "+str(self.yaw)+")"
+
+    def __mul__(self, val):
+        return EulerAngle(self.roll*val, self.pitch*val, self.yaw*val)
