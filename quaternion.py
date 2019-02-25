@@ -35,9 +35,6 @@ class Quaternion():
         q_out.z = self.w*q2.z  +  self.x*q2.y  -  self.y*q2.x  +  self.z*q2.w
         return q_out
 
-    def get_norm(self):
-        return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
-
     def normalize(self):
         norm = self.get_norm()
 
@@ -50,6 +47,9 @@ class Quaternion():
         self.y /= norm
         self.z /= norm
         return self
+
+    def get_norm(self):
+        return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
 
     def get_conjugate(self):
         return Quaternion(self.w, -self.x, -self.y, -self.z)
