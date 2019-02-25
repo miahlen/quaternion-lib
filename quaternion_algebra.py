@@ -3,19 +3,11 @@ from position import Position
 from euler_angle import EulerAngle
 import numpy as np
 
-def multiply_quaternions(q1, q2):
-    q_out = Quaternion()
-    q_out.w = q1.w*q2.w  -  q1.x*q2.x  -  q1.y*q2.y  -  q1.z*q2.z
-    q_out.x = q1.w*q2.x  +  q1.x*q2.w  +  q1.y*q2.z  -  q1.z*q2.y
-    q_out.y = q1.w*q2.y  -  q1.x*q2.z  +  q1.y*q2.w  +  q1.z*q2.x
-    q_out.z = q1.w*q2.z  +  q1.x*q2.y  -  q1.y*q2.x  +  q1.z*q2.w
-    return q_out
-
 # input v is of class Position
 def rotate_vector_by_quaternion(v,q):
     vq = Quaternion(0.0, v.x, v.y, v.z)
     q_conjugate = q.get_conjugate()
-    q_out = multiply_quaternions(multiply_quaternions(q, vq), q_conjugate)
+    q_out = q * vq * q_conjugate
     return Position(q_out.x, q_out.y, q_out.z)
 
 def quaternion_to_euler(q):

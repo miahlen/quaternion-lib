@@ -27,6 +27,14 @@ class Quaternion():
     def __str__(self):
         return "("+str(self.w)+", "+str(self.x)+", "+str(self.y)+", "+str(self.z)+")"
 
+    def __mul__(self, q2):
+        q_out = Quaternion()
+        q_out.w = self.w*q2.w  -  self.x*q2.x  -  self.y*q2.y  -  self.z*q2.z
+        q_out.x = self.w*q2.x  +  self.x*q2.w  +  self.y*q2.z  -  self.z*q2.y
+        q_out.y = self.w*q2.y  -  self.x*q2.z  +  self.y*q2.w  +  self.z*q2.x
+        q_out.z = self.w*q2.z  +  self.x*q2.y  -  self.y*q2.x  +  self.z*q2.w
+        return q_out
+
     def get_norm(self):
         return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
 
