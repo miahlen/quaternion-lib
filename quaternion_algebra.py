@@ -14,7 +14,7 @@ def multiply_quaternions(q1, q2):
 # input v is of class Position
 def rotate_vector_by_quaternion(v,q):
     vq = Quaternion(0.0, v.x, v.y, v.z)
-    q_conjugate = q.get_quaternion_conjugate()
+    q_conjugate = q.get_conjugate()
     q_out = multiply_quaternions(multiply_quaternions(q, vq), q_conjugate)
     return Position(q_out.x, q_out.y, q_out.z)
 
