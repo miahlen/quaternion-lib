@@ -30,7 +30,7 @@ class Quaternion():
     def get_norm(self):
         return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
 
-    def normalize_quaternion(self):
+    def normalize(self):
         norm = self.get_norm()
 
         # Make sure norm is not zero before normalizing the quaternion
