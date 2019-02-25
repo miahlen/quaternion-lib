@@ -36,3 +36,24 @@ def rotate_vector_by_quaternion(v,q):
     q_conjugate = get_quaternion_conjugate(q)
     q_out = multiply_quaternions(multiply_quaternions(q, vq), q_conjugate)
     return Position(q_out.x, q_out.y, q_out.z)
+
+def quaternion_to_euler(q):
+    # roll (rotation around x-axis pointing forward)
+    roll = np.arctan2(2.0 * (q.w*q.x + q.y*q.z), 1.0 - 2.0 * (q.x**2 + q.y**2))
+
+    # pitch (rotation around y-axis pointing to the left)
+    sinp = 2.0 * (q.w * q.y - q.z * q.x)
+    if sinp >= 1:
+        pitch = np.pi / 2 # use 90 degrees if out of range
+    elif sinp <= -1:
+        pitch = - np.pi / 2 # use -90 degrees if out of range
+    else:
+        pitch = np.arcsin(sinp)
+
+    # yaw (rotation around z-axis pointing upward)
+    yaw = np.arctan2( 2.0 * (q.w*q.z + q.x*q.y), 1.0 - 2.0 * (q.y**2 + q.z**2))
+    euler = EulerAngle()
+    euler.roll = roll
+    euler.pitch = pitch
+    euler.yaw = yaw
+    return euler
