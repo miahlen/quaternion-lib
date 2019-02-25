@@ -6,8 +6,7 @@ import numpy as np
 # input v is of class Position
 def rotate_vector_by_quaternion(v,q):
     vq = Quaternion(0.0, v.x, v.y, v.z)
-    q_conjugate = q.get_conjugate()
-    q_out = q * vq * q_conjugate
+    q_out = q * vq * q.get_conjugate()
     return Position(q_out.x, q_out.y, q_out.z)
 
 def quaternion_to_euler(q):
