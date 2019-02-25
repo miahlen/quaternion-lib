@@ -2,6 +2,7 @@ import unittest
 import quaternion_algebra
 from quaternion import Quaternion
 from position import Position
+from euler_angle import EulerAngle
 import numpy as np
 
 class TestQuaternionAlgebra(unittest.TestCase):
@@ -73,6 +74,24 @@ class TestQuaternionAlgebra(unittest.TestCase):
 
         q_oracle = Quaternion(10, -5, 0, -10)
         self.assertTrue(q == q_oracle)
+
+    def test_quaternion_to_euler(self):
+        # Quaternion to convert
+        q = Quaternion(0.670, 0.394, 0.511, -0.368)
+        q = quaternion_algebra.normalize_quaternion(q)
+
+        # The expected output (OBS, in degrees)
+        euler_oracle = EulerAngle(42.118,  76.921, -23.544)
+
+        # Function call
+        euler = quaternion_algebra.quaternion_to_euler(q)
+        # Convert to degrees for comparison
+        euler *= 180/np.pi
+
+        # Assert excepted behaviour to the third decimal
+        self.assertAlmostEqual(euler.roll, euler_oracle.roll, 3)
+        self.assertAlmostEqual(euler.pitch, euler_oracle.pitch, 3)
+        self.assertAlmostEqual(euler.yaw, euler_oracle.yaw, 3)
 
 
 if __name__ == '__main__':
