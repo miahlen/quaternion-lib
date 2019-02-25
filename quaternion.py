@@ -27,11 +27,11 @@ class Quaternion():
     def __str__(self):
         return "("+str(self.w)+", "+str(self.x)+", "+str(self.y)+", "+str(self.z)+")"
 
-    def get_quaternion_norm(self):
+    def get_norm(self):
         return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
 
     def normalize_quaternion(self):
-        norm = self.get_quaternion_norm()
+        norm = self.get_norm()
 
         # Make sure norm is not zero before normalizing the quaternion
         if norm==0.0:
