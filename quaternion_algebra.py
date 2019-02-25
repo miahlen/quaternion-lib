@@ -57,3 +57,28 @@ def quaternion_to_euler(q):
     euler.pitch = pitch
     euler.yaw = yaw
     return euler
+
+def get_quaternion_from_vectors(u, v):
+    cross_u_v = np.cross(u,v)
+    if np.all(cross_u_v == 0.0):
+        if all([ui+vi==0.0 for ui,vi in zip(u,v)]):
+            return Quaternion(0.0, 0.0, 0.0, -1.0)
+        else:
+            return Quaternion(1.0, 0.0, 0.0, 0.0)
+    u_norm = np.sqrt(u[0]**2 + u[1]**2 + u[2]**2)
+    u = [ui/u_norm for ui in u]
+    v_norm = np.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+    v = [vi/v_norm for vi in v]
+    cos_theta = np.dot(u,v)
+    half_cos = np.sqrt(0.5 * (1.0 + cos_theta))
+    half_sin = np.sqrt(0.5 * (1.0 - cos_theta))
+
+    cros_norm = np.sqrt(cross_u_v[0]**2 + cross_u_v[1]**2 + cross_u_v[2]**2)
+    w = [cross_i/cros_norm for cross_i in cross_u_v]
+
+    q_out = Quaternion()
+    q_out.w = half_cos
+    q_out.x = half_sin * w[0]
+    q_out.y = half_sin * w[1]
+    q_out.z = half_sin * w[2]
+    return q_out
