@@ -44,8 +44,7 @@ def get_quaternion_from_vectors(u, v):
     cros_norm = np.sqrt(cross_u_v[0]**2 + cross_u_v[1]**2 + cross_u_v[2]**2)
     w = [cross_i/cros_norm for cross_i in cross_u_v]
 
-    q_out = Quaternion(half_cos, half_sin * w[0], half_sin * w[1], half_sin * w[2])
-    return q_out
+    return Quaternion(half_cos, half_sin * w[0], half_sin * w[1], half_sin * w[2])
 
 def get_quaternion_from_vector(v):
     u = [1.0, 0.0, 0.0]
