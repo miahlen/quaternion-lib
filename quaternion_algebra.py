@@ -82,3 +82,7 @@ def get_quaternion_from_vectors(u, v):
     q_out.y = half_sin * w[1]
     q_out.z = half_sin * w[2]
     return q_out
+
+def get_quaternion_from_vector(v):
+    u = [1.0, 0.0, 0.0]
+    return get_quaternion_from_vectors(u,v)
