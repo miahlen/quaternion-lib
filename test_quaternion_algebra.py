@@ -106,6 +106,20 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # Assert excepted behaviour to the third decimal
         self.assertAlmostEqual(q, q_oracle)
 
+    def test_get_quaternion_from_vectors(self):
+        # Input variables to function
+        u = [1.2, 0, 0]
+        v = [0, 0.2, 0]
+
+        # Function call
+        q = quaternion_algebra.get_quaternion_from_vectors(u, v)
+
+        # The expected output (rotation 90 degrees around z axis)
+        q_oracle = Quaternion(np.cos(90 / 2.0 * np.pi/180), 0.0, 0.0, 1.0 * np.sin(90 / 2.0 * np.pi/180))
+
+        # Assert excepted behaviour to the third decimal
+        self.assertAlmostEqual(q, q_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
