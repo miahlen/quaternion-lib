@@ -17,5 +17,8 @@ class EulerAngle():
         self.pitch = pitch
         self.yaw = yaw
 
+    def __eq__(self, e2):
+        return self.roll==e2.roll and self.pitch==e2.pitch and self.yaw==e2.yaw
+
     def __str__(self):
         return "("+str(self.roll)+", "+str(self.pitch)+", "+str(self.yaw)+")"
