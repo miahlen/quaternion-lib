@@ -120,6 +120,20 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # Assert excepted behaviour to the third decimal
         self.assertAlmostEqual(q, q_oracle)
 
+    def test_get_quaternion_from_antiparallel_vectors(self):
+        # Input variables to function
+        u = [1.2, -0.1, 0.9]
+        v = [-1.2, 0.1, -0.9]
+
+        # Function call
+        q = quaternion_algebra.get_quaternion_from_vectors(u, v)
+
+        # The expected output
+        q_oracle = Quaternion(0.0, 0.0, 0.0, -1.0)
+
+        # Assert excepted behaviour to the third decimal
+        self.assertAlmostEqual(q, q_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
