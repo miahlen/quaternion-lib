@@ -57,6 +57,17 @@ class TestQuaternion(unittest.TestCase):
         self.assertTrue(q == Quaternion(-1.0, 0.0, 0.0, 0.0))
         self.assertTrue(np.sqrt(q.w**2 + q.x**2 + q.y**2 + q.z**2) == 1)
 
+    def test_get_norm(self):
+        """Test method get_norm"""
+        # Create instance of class Quaternion to get norm of
+        q = Quaternion(-2.1,0.0,0.0,0.0)
+
+        # Function call (to function to test)
+        norm = q.get_norm()
+
+        # Assert expected behaviour
+        self.assertTrue(norm == 2.1)
+
 
 if __name__ == '__main__':
     unittest.main()
