@@ -138,7 +138,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         q_oracle = Quaternion(0.0, 0.0, 0.0, -1.0)
 
         # Assert expected behaviour
-        self.assertAlmostEqual(q, q_oracle)
+        self.assertTrue(q == q_oracle)
 
     def test_get_quaternion_from_equal_vectors(self):
         # Input variables to function
@@ -152,7 +152,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         q_oracle = Quaternion(1, 0, 0, 0)
 
         # Assert expected behaviour
-        self.assertAlmostEqual(q, q_oracle)
+        self.assertTrue(q == q_oracle)
 
 
 if __name__ == '__main__':
