@@ -29,6 +29,20 @@ class TestQuaternion(unittest.TestCase):
         # Assert expected behaviour
         self.assertTrue(q == q_oracle)
 
+    def test_str(self):
+        """Test operator overloading method __str__"""
+        # Create instance of class Quaternion to get string of
+        q = Quaternion(0.9, -1, -0.4, 0.1)
+
+        # Function call (to function to test)
+        s = str(q)
+
+        # Create oracle
+        s_oracle = "(0.9, -1, -0.4, 0.1)"
+
+        # Assert expected behaviour
+        self.assertEqual(s, s_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
