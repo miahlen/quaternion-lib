@@ -68,6 +68,20 @@ class TestQuaternion(unittest.TestCase):
         # Assert expected behaviour
         self.assertTrue(norm == 2.1)
 
+    def test_get_conjugate(self):
+        """Test method get_conjugate"""
+        # Create instance of class Quaternion to get conjugate of
+        q_in = Quaternion(-2.1, 0.9, 1.4, -0.2)
+
+        # Function call (to function to test)
+        q = q_in.get_conjugate()
+
+        # Create oracle
+        q_oracle = Quaternion(-2.1, -0.9, -1.4, 0.2)
+
+        # Assert expected behaviour
+        self.assertTrue(q == q_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
