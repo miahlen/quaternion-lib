@@ -7,12 +7,6 @@ import numpy as np
 
 class TestQuaternionAlgebra(unittest.TestCase):
 
-    def test_normalize_quaternion(self):
-        q = Quaternion(-2.1,0.0,0.0,0.0)
-        q.normalize()
-        self.assertTrue(np.sqrt(q.w**2 + q.x**2 + q.y**2 + q.z**2) == 1)
-        self.assertTrue(q == Quaternion(-1.0, 0.0, 0.0, 0.0))
-
     # Perform rotation of vector (of class Position) with quaternion.
     def test_rotate_vector_by_quaternion(self):
         # Vector to rotate

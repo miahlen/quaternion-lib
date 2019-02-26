@@ -1,5 +1,6 @@
 import unittest
 from quaternion import Quaternion
+import numpy as np
 
 class TestQuaternion(unittest.TestCase):
 
@@ -42,6 +43,19 @@ class TestQuaternion(unittest.TestCase):
 
         # Assert expected behaviour
         self.assertEqual(s, s_oracle)
+
+    def test_normalize(self):
+        """Test method normalize"""
+        # Create instance of class Quaternion to normalize
+        q = Quaternion(-2.1,0.0,0.0,0.0)
+
+        # Function call (to function to test)
+        q.normalize()
+
+        # Assert expected behaviour; the expected quaternion out and that
+        # the norm equals 1 after normalization.
+        self.assertTrue(q == Quaternion(-1.0, 0.0, 0.0, 0.0))
+        self.assertTrue(np.sqrt(q.w**2 + q.x**2 + q.y**2 + q.z**2) == 1)
 
 
 if __name__ == '__main__':
