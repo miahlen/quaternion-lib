@@ -48,6 +48,20 @@ class TestPosition(unittest.TestCase):
         self.assertAlmostEqual(p.y, p_oracle.y)
         self.assertAlmostEqual(p.z, p_oracle.z)
 
+    def test_str(self):
+        """Test operator overloading method __str__"""
+        # Create instance of class Position to get string of
+        p1 = Position(0.9, -1, -0.4)
+
+        # Function call (to function to test)
+        s = str(p1)
+
+        # Create oracle
+        s_oracle = "(0.9, -1, -0.4)"
+
+        # Assert expected behaviour
+        self.assertEqual(s, s_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
