@@ -88,7 +88,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # Convert to degrees for comparison
         euler *= 180/np.pi
 
-        # Assert excepted behaviour to the third decimal
+        # Assert expected behaviour to the third decimal
         self.assertAlmostEqual(euler.roll, euler_oracle.roll, 3)
         self.assertAlmostEqual(euler.pitch, euler_oracle.pitch, 3)
         self.assertAlmostEqual(euler.yaw, euler_oracle.yaw, 3)
@@ -103,7 +103,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # The expected output (rotation 90 degrees around z axis)
         q_oracle = Quaternion(np.cos(90 / 2.0 * np.pi/180), 0.0, 0.0, 1.0 * np.sin(90 / 2.0 * np.pi/180))
 
-        # Assert excepted behaviour to the third decimal
+        # Assert expected behaviour
         self.assertAlmostEqual(q, q_oracle)
 
     def test_get_quaternion_from_vectors(self):
@@ -117,7 +117,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # The expected output (rotation 90 degrees around z axis)
         q_oracle = Quaternion(np.cos(90 / 2.0 * np.pi/180), 0.0, 0.0, 1.0 * np.sin(90 / 2.0 * np.pi/180))
 
-        # Assert excepted behaviour to the third decimal
+        # Assert expected behaviour
         self.assertAlmostEqual(q, q_oracle)
 
     def test_get_quaternion_from_antiparallel_vectors(self):
@@ -131,7 +131,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # The expected output
         q_oracle = Quaternion(0.0, 0.0, 0.0, -1.0)
 
-        # Assert excepted behaviour to the third decimal
+        # Assert expected behaviour
         self.assertAlmostEqual(q, q_oracle)
 
     def test_get_quaternion_from_equal_vectors(self):
@@ -145,7 +145,7 @@ class TestQuaternionAlgebra(unittest.TestCase):
         # The expected output
         q_oracle = Quaternion(1, 0, 0, 0)
 
-        # Assert excepted behaviour to the third decimal
+        # Assert expected behaviour
         self.assertAlmostEqual(q, q_oracle)
 
 
