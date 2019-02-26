@@ -104,7 +104,10 @@ class TestQuaternionAlgebra(unittest.TestCase):
         q_oracle = Quaternion(np.cos(90 / 2.0 * np.pi/180), 0.0, 0.0, 1.0 * np.sin(90 / 2.0 * np.pi/180))
 
         # Assert expected behaviour
-        self.assertAlmostEqual(q, q_oracle)
+        self.assertAlmostEqual(q.w, q_oracle.w)
+        self.assertAlmostEqual(q.x, q_oracle.x)
+        self.assertAlmostEqual(q.y, q_oracle.y)
+        self.assertAlmostEqual(q.z, q_oracle.z)
 
     def test_get_quaternion_from_vectors(self):
         # Input variables to function
@@ -118,7 +121,10 @@ class TestQuaternionAlgebra(unittest.TestCase):
         q_oracle = Quaternion(np.cos(90 / 2.0 * np.pi/180), 0.0, 0.0, 1.0 * np.sin(90 / 2.0 * np.pi/180))
 
         # Assert expected behaviour
-        self.assertAlmostEqual(q, q_oracle)
+        self.assertAlmostEqual(q.w, q_oracle.w)
+        self.assertAlmostEqual(q.x, q_oracle.x)
+        self.assertAlmostEqual(q.y, q_oracle.y)
+        self.assertAlmostEqual(q.z, q_oracle.z)
 
     def test_get_quaternion_from_antiparallel_vectors(self):
         # Input variables to function
