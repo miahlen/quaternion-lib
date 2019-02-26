@@ -32,6 +32,20 @@ class TestEulerAngle(unittest.TestCase):
         self.assertTrue(e == e_oracle)
         self.assertFalse(e_in == e_oracle)
 
+    def test_str(self):
+        """Test operator overloading method __str__"""
+        # Create instance of class EulerAngle to get string of
+        e1 = EulerAngle(0.9, -1, -0.4)
+
+        # Function call (to function to test)
+        s = str(e1)
+
+        # Create oracle
+        s_oracle = "(0.9, -1, -0.4)"
+
+        # Assert expected behaviour
+        self.assertEqual(s, s_oracle)
+
 
 if __name__ == '__main__':
     unittest.main()
